@@ -21,6 +21,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
   <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -52,12 +53,24 @@
               <form name="calculator" align="center">
                   <div class="row">
                       <div class="six columns">
-                          Portfolio Size: <input type="integer" id ="portfolioSize" required/> <br/>
-                          Value at Risk: <input type="integer" id ="VaR" required/> <br/>
+                          <div class="tooltip">Portfolio Size:
+                              <span class="tooltiptext">Your total value of your portfolio consisting of cash, stocks, bonds, etc should be entered here.</span>
+                          </div>
+                          <input type="integer" id ="portfolioSize" required/> <br/>
+                          <div class="tooltip">Allocated Risk:
+                              <span class="tooltiptext">Your desired risk for the trade should be entered here. For example, a desired risk of 5% means you are willing to risk losing 5% of your total portfolio on this trade.</span>
+                          </div>
+                          <input type="integer" id ="VaR" required/> <br/>
                       </div>
                       <div class="six columns">
-                          Stock Price: <input type="integer" id ="stockPrice" required/> <br/>
-                          Stop Loss: <input type="integer" id ="stopLoss" required/> <br/>
+                          <div class="tooltip">Stock Price:
+                              <span class="tooltiptext">The current price of the stock should be entered here.</span>
+                          </div>
+                          <input type="integer" id ="stockPrice" required/> <br/>
+                          <div class="tooltip">Stop Loss:
+                              <span class="tooltiptext">Your exit price should be entered here.</span>
+                          </div>
+                          <input type="integer" id ="stopLoss" required/> <br/>
                       </div>
                       <input type="button" value ="Calculate" onclick="calculatePosSize(), formValidation()"> <br/>
                   </div>
