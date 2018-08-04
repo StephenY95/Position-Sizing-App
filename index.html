@@ -1,36 +1,77 @@
-<html>
-    <head>
-        <!-- JAVASCRIPT -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="calculator.js"></script>
-        <script type="text/javascript" src="form-validation.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-        <title>Risk Calculator</title>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Risk Calculator</title>
+  <meta name="Risk management" content="">
+  <meta name="Stephen Yao" content="">
 
-        <link rel="stylesheet" href="skeleton.css">
-        <link rel="icon" type="image/png" href="images/logo-favicon2.png">
-        <div class="container">
-            <h2 class="title" align="center">Risk management at its simplicity.</h2>
-        </div>
-        <div class="ten columns">
-            <h5 align="center">This app is used to determine the appropriate position size to take based upon portfolio size and risk tolerance of user.</h3>
-        </div>
-    </head>
-    <body>
-        <form name="calculator" align="center">
-            <div class="row">
-                <div class="ten columns">
-                    Portfolio Size: <input type="integer" id ="portfolioSize" required/> <br/>
-                    Value at Risk: <input type="integer" id ="VaR" required/> <br/>
-                    Stock Price: <input type="integer" id ="stockPrice" required/> <br/>
-                    Stop Loss: <input type="integer" id ="stopLoss" required/> <br/>
-                    <input type="submit" value ="Calculate" onclick="calculatePosSize(), formValidation()"> <br/>
-                </div>
-            </div>
-        </form>
-        <div class="container">
-            <div id = "message1" style="display:none"></div><br>
-            <div id = "message2" style="display:none"></div><br>
-        </div>
-    </body>
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/calculator.js"></script>
+  <script type="text/javascript" src="js/form-validation.js"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/logo-favicon2.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="ten column" align="center" style="margin-top: 25%">
+        <h4>Risk management at its simplicity.</h4>
+        <p>This app is used to determine the appropriate position size to take based upon portfolio size and risk tolerance of user.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="row">
+          <div class="twelve columns">
+              <form name="calculator" align="center">
+                  <div class="row">
+                      <div class="six columns">
+                          Portfolio Size: <input type="integer" id ="portfolioSize" required/> <br/>
+                          Value at Risk: <input type="integer" id ="VaR" required/> <br/>
+                      </div>
+                      <div class="six columns">
+                          Stock Price: <input type="integer" id ="stockPrice" required/> <br/>
+                          Stop Loss: <input type="integer" id ="stopLoss" required/> <br/>
+                      </div>
+                      <input type="submit" value ="Calculate" onclick="calculatePosSize(), formValidation()"> <br/>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <div class="container">
+      <div id = "message1" style="display:none"></div><br>
+      <div id = "message2" style="display:none"></div><br>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
 </html>
