@@ -1,8 +1,8 @@
 // This JS file is used to do the calculations for the position size
 
-// Calculates position size required, based on variables taken from HTML
-// Displays message
+// Calculates position size required
 function calculatePosSize() {
+	// Declare variables
 	var portfolioSize = parseFloat(
 		document.getElementById('portfolioSize').value
 	);
@@ -12,6 +12,7 @@ function calculatePosSize() {
 	var posSize = Math.round((portfolioSize * VaR) / (stockPrice - stopLoss));
 	var riskCapital = Math.round(posSize * (stockPrice - stopLoss)).toFixed(2);
 
+	// Displays message and calculated position size
 	document.getElementById('message1').innerHTML =
 		'Based on a portfolio size of $' +
 		portfolioSize +

@@ -1,10 +1,14 @@
 <html>
     <head>
-        <title>Risk Calculator</title>
+        <!-- JAVASCRIPT -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="calculator.js"></script>
+        <script type="text/javascript" src="form-validation.js"></script>
+
+        <title>Risk Calculator</title>
+
         <link rel="stylesheet" href="skeleton.css">
         <link rel="icon" type="image/png" href="images/logo-favicon2.png">
-        <!-- <link rel="stylesheet" href="normalize.css"> -->
         <div class="container">
             <h2 class="title" align="center">Risk management at its simplicity.</h2>
         </div>
@@ -13,16 +17,20 @@
         </div>
     </head>
     <body>
+        <form name="calculator" align="center">
+            <div class="row">
+                <div class="ten columns">
+                    Portfolio Size: <input type="integer" id ="portfolioSize" required/> <br/>
+                    Value at Risk: <input type="integer" id ="VaR" required/> <br/>
+                    Stock Price: <input type="integer" id ="stockPrice" required/> <br/>
+                    Stop Loss: <input type="integer" id ="stopLoss" required/> <br/>
+                    <input type="submit" value ="Calculate" onclick="calculatePosSize(), formValidation()"> <br/>
+                </div>
+            </div>
+        </form>
         <div class="container">
-            <form id="calculator" align="center">
-                Portfolio Size: <input type="integer" id ="portfolioSize" /> <br/>
-                Value at Risk: <input type="integer" id ="VaR" /> <br/>
-                Stock Price: <input type="integer" id ="stockPrice" /> <br/>
-                Stop Loss: <input type="integer" id ="stopLoss" /> <br/>
-                <input type="button" value ="Calculate" onclick="calculatePosSize()"> <br/>
-                <div id = "message1" style="display:none"></div><br>
-                <div id = "message2" style="display:none"></div><br>
-            </form>
+            <div id = "message1" style="display:none"></div><br>
+            <div id = "message2" style="display:none"></div><br>
         </div>
     </body>
 </html>
