@@ -1,5 +1,11 @@
 // This JS file is used to do the calculations for the position size
 
+// Rounding function
+function RoundNum(num, length) {
+	var number = Math.round(num * Math.pow(10, length)) / Math.pow(10, length);
+	return number;
+}
+
 // Calculates position size required
 function calculatePosSize() {
 	// Declare variables
@@ -9,10 +15,10 @@ function calculatePosSize() {
 	var VaR = parseFloat(document.getElementById('VaR').value);
 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
 	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
-	var posSize = Math.round((portfolioSize * VaR) / (stockPrice - stopLoss));
-	var exposure = Math.round(stockPrice * posSize).toFixed(2);
-	var exposurePcnt = Math.round((exposure / portfolioSize) * 100);
-	var riskCapital = Math.round(posSize * (stockPrice - stopLoss)).toFixed(2);
+	var posSize = RoundNum((portfolioSize * VaR) / (stockPrice - stopLoss), 0);
+	var exposure = RoundNum(stockPrice * posSize, 3);
+	var exposurePcnt = RoundNum((exposure / portfolioSize) * 100, 3);
+	var riskCapital = RoundNum(posSize * (stockPrice - stopLoss), 3);
 
 	// Displays message and calculated position size
 	document.getElementById('message1').innerHTML =
