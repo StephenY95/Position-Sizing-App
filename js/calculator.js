@@ -33,7 +33,7 @@ function calculatePosSize() {
 		' or ' +
 		exposurePcnt +
 		'%' +
-		', and your risk capital (your maximum loss) on this trade will be $' +
+		' of your portfolio, and your risk capital (your maximum loss) in this trade will be $' +
 		riskCapital +
 		'.';
 	document.getElementById('message1').style.display = 'block';
