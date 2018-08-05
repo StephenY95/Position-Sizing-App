@@ -10,6 +10,8 @@ function calculatePosSize() {
 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
 	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
 	var posSize = Math.round((portfolioSize * VaR) / (stockPrice - stopLoss));
+	var exposure = Math.round(stockPrice * posSize).toFixed(2);
+	var exposurePcnt = Math.round((exposure / portfolioSize) * 100);
 	var riskCapital = Math.round(posSize * (stockPrice - stopLoss)).toFixed(2);
 
 	// Displays message and calculated position size
@@ -20,7 +22,12 @@ function calculatePosSize() {
 		posSize +
 		'.';
 	document.getElementById('message2').innerHTML =
-		'Your risk capital, meaning your maximum loss on this trade will be $' +
+		'Your exposure in this trade will be $' +
+		exposure +
+		' or ' +
+		exposurePcnt +
+		'%' +
+		', and your risk capital (your maximum loss) on this trade will be $' +
 		riskCapital +
 		'.';
 	document.getElementById('message1').style.display = 'block';
