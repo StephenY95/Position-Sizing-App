@@ -6,7 +6,7 @@ function checkPortfolioSize() {
 	);
 
 	if (isNaN(portfolioSize) || portfolioSize < 0) {
-		document.getElementById('errorname').innerHTML =
+		document.getElementById('portfolioSize').innerHTML =
 			'Please enter a positive Portfolio Size.';
 	} else {
 		document.getElementById('errorname').innerHTML = '-';
