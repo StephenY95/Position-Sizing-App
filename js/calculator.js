@@ -2,6 +2,16 @@
 var validForm = 'False';
 validForm = true;
 
+// HELPER FUNCTION (Rounding)
+function RoundNum(num, length) {
+	var number = Math.round(num * Math.pow(10, length)) / Math.pow(10, length);
+	return number;
+}
+// HELPER FUNCTION (Adding commas to big numbers)
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 // FORM VALIDATION
 function checkPortfolioSize() {
 	var portfolioSize = parseFloat(
@@ -63,12 +73,6 @@ function checkStopLoss() {
 	}
 }
 
-// Rounding function
-function RoundNum(num, length) {
-	var number = Math.round(num * Math.pow(10, length)) / Math.pow(10, length);
-	return number;
-}
-
 // Calculates position size required
 function calculatePosSize() {
 	// Declare variables
@@ -88,20 +92,20 @@ function calculatePosSize() {
 		// Displays message and calculated position size
 		document.getElementById('message1').innerHTML =
 			'Based on a portfolio size of $' +
-			portfolioSize +
+			numberWithCommas(portfolioSize) +
 			', your recommended number of stocks to purchase is ' +
-			posSize +
+			numberWithCommas(posSize) +
 			'.';
 		document.getElementById('message2').innerHTML =
 			'Your exposure in this trade will be $' +
-			exposure +
+			numberWithCommas(exposure) +
 			' or ' +
-			exposurePcnt +
+			numberWithCommas(exposurePcnt) +
 			'%' +
 			' of your portfolio, and your risk capital (your maximum loss) in this trade will be $' +
-			riskCapital +
+			numberWithCommas(riskCapital) +
 			' or ' +
-			riskCapitalPcnt +
+			numberWithCommas(riskCapitalPcnt) +
 			'% of your portfolio.';
 		document.getElementById('message1').style.display = 'block';
 		document.getElementById('message2').style.display = 'block';
