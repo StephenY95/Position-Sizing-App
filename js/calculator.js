@@ -30,7 +30,7 @@ function checkPortfolioSize() {
 }
 
 function checkVaR() {
-	var VaR = parseFloat(document.getElementById('VaR').value);
+	var VaR = parseFloat(document.getElementById('VaR').value) / 100;
 
 	if ((VaR <= 0) | (VaR > 100)) {
 		console.log('Please enter a numerical value between 0 and 100.');
@@ -42,6 +42,7 @@ function checkVaR() {
 		return (validForm = true);
 	}
 }
+
 function checkStockPrice() {
 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
 
@@ -55,6 +56,7 @@ function checkStockPrice() {
 		return (validForm = true);
 	}
 }
+
 function checkStopLoss() {
 	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
@@ -67,6 +69,28 @@ function checkStopLoss() {
 		return (validForm = false);
 	} else if (stockPrice <= stopLoss) {
 		console.log('Your stop loss cannot be greater than the stock price.');
+		return (validForm = false);
+	} else {
+		return (validForm = true);
+	}
+}
+
+function highExposure() {
+	// Declare variables
+	var portfolioSize = parseFloat(
+		document.getElementById('portfolioSize').value
+	);
+	var VaR = parseFloat(document.getElementById('VaR').value) / 100;
+	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
+	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
+	var posSize = RoundNum((portfolioSize * VaR) / (stockPrice - stopLoss), 0);
+	var exposure = RoundNum(stockPrice * posSize, 2);
+	if (exposure >= portfolioSize) {
+		console.log(
+			'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.'
+		);
+		document.getElementById('message1').style.display = 'none';
+		document.getElementById('message2').style.display = 'none';
 		return (validForm = false);
 	} else {
 		return (validForm = true);
@@ -109,6 +133,10 @@ function calculatePosSize() {
 			'% of your portfolio.';
 		document.getElementById('message1').style.display = 'block';
 		document.getElementById('message2').style.display = 'block';
+	} else if (exposure >= portfolioSize) {
+		console.log(
+			'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.'
+		);
 	} else {
 		document.getElementById('message1').style.display = 'none';
 		document.getElementById('message2').style.display = 'none';
