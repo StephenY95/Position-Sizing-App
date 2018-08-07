@@ -48,30 +48,30 @@
 <div class="container">
     <div class="row">
         <div class="twelve columns">
-            <form name="calculator" align="center">
+            <form name="calculator" align="center" method="POST">
                 <div class="row">
                     <div class="six columns" align="center">
                         <div class="tooltip">Portfolio Size ($):
                             <span class="tooltiptext">Your total value of your portfolio consisting of cash, stocks, bonds, etc should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="portfolioSize" onkeyup="checkPortfolioSize()"> <br>
+                        <input type="integer" style="text-align:center" id="portfolioSize" onkeyup="checkPortfolioSize()" required> <br>
                         <div class="tooltip">Allocated Risk (%):
                             <span class="tooltiptext">Your desired risk for the trade should be entered here. For example, a desired risk of 5% means you are willing to risk losing 5% of your total portfolio on this trade.</span>
                         </div><br>
-                        <input type="integer" id="VaR" style="text-align:center" onkeyup="checkVaR()"> <br>
+                        <input type="integer" id="VaR" style="text-align:center" onkeyup="checkVaR()" required> <br>
                     </div>
                     <div class="six columns" align="center">
                         <div class="tooltip">Stock Price ($):
                             <span class="tooltiptext">The current price of the stock should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="stockPrice" onkeyup="checkStockPrice()"> <br>
+                        <input type="integer" style="text-align:center" id="stockPrice" onkeyup="checkStockPrice()" required> <br>
                         <div class="tooltip">Stop Loss ($):
                             <span class="tooltiptext">Your exit price should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="stopLoss" onkeyup="checkStopLoss()"> <br>
+                        <input type="integer" style="text-align:center" id="stopLoss" onkeyup="checkStopLoss()" required> <br>
                     </div>
                 </div>
-                <input type="button" value="Calculate" onclick="highExposure(), calculatePosSize()"> <br>
+                <input type="button" value="Calculate" onclick="calculatePosSize()"><br>
             </form>
         </div>
     </div>

@@ -1,6 +1,6 @@
 // This JS file is used to do the calculations for the position size
 var validForm = 'False';
-validForm = true;
+validForm = false;
 
 // HELPER FUNCTION (Rounding)
 function RoundNum(num, length) {
@@ -18,13 +18,17 @@ function checkPortfolioSize() {
 		document.getElementById('portfolioSize').value
 	);
 
-	if (portfolioSize <= 0) {
-		console.log('Please enter a positive value.');
+	if (portfolioSize <= 0 || (portfolioSize = '')) {
+		alert('Please enter a positive value.');
+		document.getElementById('portfolioSize').style.borderColor = 'red';
 		return (validForm = false);
 	} else if (isNaN(portfolioSize)) {
 		console.log('Please enter a numerical value.');
+		document.getElementById('portfolioSize').style.borderColor = 'red';
 		return (validForm = false);
 	} else {
+		document.getElementById('portfolioSize').style.borderColor =
+			'transparent';
 		return (validForm = true);
 	}
 }
@@ -75,29 +79,7 @@ function checkStopLoss() {
 	}
 }
 
-function highExposure() {
-	// Declare variables
-	var portfolioSize = parseFloat(
-		document.getElementById('portfolioSize').value
-	);
-	var VaR = parseFloat(document.getElementById('VaR').value) / 100;
-	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
-	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
-	var posSize = RoundNum((portfolioSize * VaR) / (stockPrice - stopLoss), 0);
-	var exposure = RoundNum(stockPrice * posSize, 2);
-	if (exposure >= portfolioSize) {
-		console.log(
-			'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.'
-		);
-		document.getElementById('message1').style.display = 'none';
-		document.getElementById('message2').style.display = 'none';
-		return (validForm = false);
-	} else {
-		return (validForm = true);
-	}
-}
-
-// Calculates position size required
+// Calculates position size required and displays messages
 function calculatePosSize() {
 	// Declare variables
 	var portfolioSize = parseFloat(
@@ -112,7 +94,8 @@ function calculatePosSize() {
 	var riskCapital = RoundNum(posSize * (stockPrice - stopLoss), 2);
 	var riskCapitalPcnt = RoundNum((riskCapital / portfolioSize) * 100, 2);
 
-	if (validForm == true) {
+	// Check for valid form and high exposure
+	if (validForm == true && exposure <= portfolioSize) {
 		// Displays message and calculated position size
 		document.getElementById('message1').innerHTML =
 			'Based on a portfolio size of $' +
@@ -133,10 +116,10 @@ function calculatePosSize() {
 			'% of your portfolio.';
 		document.getElementById('message1').style.display = 'block';
 		document.getElementById('message2').style.display = 'block';
-	} else if (exposure >= portfolioSize) {
-		console.log(
-			'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.'
-		);
+	} else if (exposure => portfolioSize) {
+		document.getElementById('message1').innerHTML =
+			'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.';
+		document.getElementById('message2').style.display = 'none';
 	} else {
 		document.getElementById('message1').style.display = 'none';
 		document.getElementById('message2').style.display = 'none';
