@@ -27,6 +27,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/calculator.js"></script>
+  <script type="text/javascript" src="js/validateForm.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -39,7 +40,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container">
 <div class="row">
-  <div class="ten column" align="center" style="margin-top: 25%">
+  <div id="header" class="ten column" align="center" style="margin-top: 25%">
     <h1>Risk management at its simplicity.</h1>
     <p>This app is used to determine the appropriate position size to take based on portfolio size and risk tolerance of user.</p>
   </div>
@@ -48,27 +49,27 @@
 <div class="container">
     <div class="row">
         <div class="twelve columns">
-            <form name="calculator" align="center" method="POST">
+            <form id="calculator" align="center" method="POST">
                 <div class="row">
                     <div class="six columns" align="center">
                         <div class="tooltip">Portfolio Size ($):
                             <span class="tooltiptext">Your total value of your portfolio consisting of cash, stocks, bonds, etc should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="portfolioSize" onkeyup="checkPortfolioSize()" required> <br>
+                        <input type="integer" style="text-align:center" id="portfolioSize" onkeydown="checkPortfolioSize()" required> <br>
                         <div class="tooltip">Allocated Risk (%):
                             <span class="tooltiptext">Your desired risk for the trade should be entered here. For example, a desired risk of 5% means you are willing to risk losing 5% of your total portfolio on this trade.</span>
                         </div><br>
-                        <input type="integer" id="VaR" style="text-align:center" onkeyup="checkVaR()" required> <br>
+                        <input type="integer" id="VaR" style="text-align:center" onkeydown="checkVaR()" required> <br>
                     </div>
                     <div class="six columns" align="center">
                         <div class="tooltip">Stock Price ($):
                             <span class="tooltiptext">The current price of the stock should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="stockPrice" onkeyup="checkStockPrice()" required> <br>
+                        <input type="integer" style="text-align:center" id="stockPrice" onkeydown="checkStockPrice()" required> <br>
                         <div class="tooltip">Stop Loss ($):
                             <span class="tooltiptext">Your exit price should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="stopLoss" onkeyup="checkStopLoss()" required> <br>
+                        <input type="integer" style="text-align:center" id="stopLoss" onkeydown="checkStopLoss()" required> <br>
                     </div>
                 </div>
                 <input type="button" value="Calculate" onclick="calculatePosSize()"><br>

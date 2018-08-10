@@ -1,6 +1,5 @@
 // This JS file is used to do the calculations for the position size
-var validForm = 'False';
-validForm = false;
+validForm = true;
 
 // HELPER FUNCTION (Rounding)
 function RoundNum(num, length) {
@@ -13,71 +12,67 @@ function numberWithCommas(x) {
 }
 
 // FORM VALIDATION
-function checkPortfolioSize() {
-	var portfolioSize = parseFloat(
-		document.getElementById('portfolioSize').value
-	);
-
-	if (portfolioSize <= 0 || (portfolioSize = '')) {
-		alert('Please enter a positive value.');
-		document.getElementById('portfolioSize').style.borderColor = 'red';
-		return (validForm = false);
-	} else if (isNaN(portfolioSize)) {
-		console.log('Please enter a numerical value.');
-		document.getElementById('portfolioSize').style.borderColor = 'red';
-		return (validForm = false);
-	} else {
-		document.getElementById('portfolioSize').style.borderColor =
-			'transparent';
-		return (validForm = true);
-	}
-}
-
-function checkVaR() {
-	var VaR = parseFloat(document.getElementById('VaR').value) / 100;
-
-	if ((VaR <= 0) | (VaR > 100)) {
-		console.log('Please enter a numerical value between 0 and 100.');
-		return (validForm = false);
-	} else if (isNaN(VaR)) {
-		console.log('Please enter a numerical value.');
-		return (validForm = false);
-	} else {
-		return (validForm = true);
-	}
-}
-
-function checkStockPrice() {
-	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
-
-	if (stockPrice <= 0) {
-		console.log('Please enter a stock stock value above $0');
-		return (validForm = false);
-	} else if (isNaN(stockPrice)) {
-		console.log('Please enter a numerical value.');
-		return (validForm = false);
-	} else {
-		return (validForm = true);
-	}
-}
-
-function checkStopLoss() {
-	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
-	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
-
-	if (stopLoss <= 0) {
-		console.log('Please enter a stock stock value above $0');
-		return (validForm = false);
-	} else if (isNaN(stopLoss)) {
-		console.log('Please enter a numerical value.');
-		return (validForm = false);
-	} else if (stockPrice <= stopLoss) {
-		console.log('Your stop loss cannot be greater than the stock price.');
-		return (validForm = false);
-	} else {
-		return (validForm = true);
-	}
-}
+// function checkPortfolioSize() {
+// 	var portfolioSize = parseFloat(
+// 		document.getElementById('portfolioSize').value
+// 	);
+//
+// 	if (portfolioSize <= 0 || (portfolioSize = '')) {
+// 		window.alert('Please enter a positive value.');
+// 		return (validForm = false);
+// 	} else if (isNaN(portfolioSize)) {
+// 		window.alert('Please enter a numerical value.');
+// 		return (validForm = false);
+// 	} else {
+// 		return (validForm = true);
+// 	}
+// }
+//
+// function checkVaR() {
+// 	var VaR = parseFloat(document.getElementById('VaR').value) / 100;
+//
+// 	if ((VaR <= 0) | (VaR > 100)) {
+// 		window.alert('Please enter a numerical value between 0 and 100.');
+// 		return (validForm = false);
+// 	} else if (isNaN(VaR)) {
+// 		window.alert('Please enter a numerical value.');
+// 		return (validForm = false);
+// 	} else {
+// 		return (validForm = true);
+// 	}
+// }
+//
+// function checkStockPrice() {
+// 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
+//
+// 	if (stockPrice <= 0) {
+// 		window.alert('Please enter a stock stock value above $0');
+// 		return (validForm = false);
+// 	} else if (isNaN(stockPrice)) {
+// 		window.alert('Please enter a numerical value.');
+// 		return (validForm = false);
+// 	} else {
+// 		return (validForm = true);
+// 	}
+// }
+//
+// function checkStopLoss() {
+// 	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
+// 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
+//
+// 	if (stopLoss <= 0) {
+// 		window.alert('Please enter a stock stock value above $0');
+// 		return (validForm = false);
+// 	} else if (isNaN(stopLoss)) {
+// 		window.alert('Please enter a numerical value.');
+// 		return (validForm = false);
+// 	} else if (stockPrice <= stopLoss) {
+// 		window.alert('Your stop loss cannot be greater than the stock price.');
+// 		return (validForm = false);
+// 	} else {
+// 		return (validForm = true);
+// 	}
+// }
 
 // Calculates position size required and displays messages
 function calculatePosSize() {
@@ -114,8 +109,7 @@ function calculatePosSize() {
 			' or ' +
 			numberWithCommas(riskCapitalPcnt) +
 			'% of your portfolio.';
-		document.getElementById('message1').style.display = 'block';
-		document.getElementById('message2').style.display = 'block';
+		$('#message1, #message2').fadeIn(500);
 	} else if (exposure => portfolioSize) {
 		document.getElementById('message1').innerHTML =
 			'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.';
