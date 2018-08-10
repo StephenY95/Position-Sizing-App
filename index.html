@@ -55,21 +55,21 @@
                         <div class="tooltip">Portfolio Size ($):
                             <span class="tooltiptext">Your total value of your portfolio consisting of cash, stocks, bonds, etc should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="portfolioSize" onkeydown="checkPortfolioSize()" required> <br>
+                        <input type="integer" style="text-align:center" id="portfolioSize"> <br>
                         <div class="tooltip">Allocated Risk (%):
                             <span class="tooltiptext">Your desired risk for the trade should be entered here. For example, a desired risk of 5% means you are willing to risk losing 5% of your total portfolio on this trade.</span>
                         </div><br>
-                        <input type="integer" id="VaR" style="text-align:center" onkeydown="checkVaR()" required> <br>
+                        <input type="integer" id="VaR" style="text-align:center"> <br>
                     </div>
                     <div class="six columns" align="center">
                         <div class="tooltip">Stock Price ($):
                             <span class="tooltiptext">The current price of the stock should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="stockPrice" onkeydown="checkStockPrice()" required> <br>
+                        <input type="integer" style="text-align:center" id="stockPrice"> <br>
                         <div class="tooltip">Stop Loss ($):
                             <span class="tooltiptext">Your exit price should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="stopLoss" onkeydown="checkStopLoss()" required> <br>
+                        <input type="integer" style="text-align:center" id="stopLoss"> <br>
                     </div>
                 </div>
                 <input type="button" value="Calculate" onclick="calculatePosSize()"><br>

@@ -1,5 +1,68 @@
 // This JS file is used to do the calculations for the position size
-validForm = true;
+var validForm = false;
+
+// FORM VALIDATION
+$(function() {
+	$('#calculator, #header')
+		.hide()
+		.fadeIn(1000);
+
+	// portfolio size check
+	$('#portfolioSize').blur(function() {
+		if ($('#portfolioSize') <= 0 || (portfolioSize = '')) {
+			window.alert('Please enter a positive value.');
+			$('#portfolioSize').select();
+			return (validForm = false);
+		} else if (isNaN($('#portfolioSize'))) {
+			window.alert('Please enter a numerical value.');
+			$('#portfolioSize').select();
+			return (validForm = false);
+		} else {
+			return (validForm = true);
+		}
+	});
+	// allocated risk check
+	$('#VaR').blur(function() {
+		if (($('#VaR') <= 0) | ($('#VaR') > 100)) {
+			window.alert('Please enter a numerical value between 0 and 100.');
+			$('#VaR').return((validForm = false));
+		} else if (isNaN($('#VaR'))) {
+			window.alert('Please enter a numerical value.');
+			return (validForm = false);
+		} else {
+			return (validForm = true);
+		}
+	});
+	// stock price check
+	$('#stockPrice').blur(function() {
+		if ($('#stockPrice') <= 0) {
+			window.alert('Please enter a stock stock value above $0');
+			return (validForm = false);
+		} else if (isNaN($('#stockPrice'))) {
+			window.alert('Please enter a numerical value.');
+			return (validForm = false);
+		} else {
+			return (validForm = true);
+		}
+	});
+	// stop loss check
+	$('#stopLoss').blur(function() {
+		if ($('#stopLoss') <= 0) {
+			window.alert('Please enter a stock stock value above $0');
+			return (validForm = false);
+		} else if (isNaN($('#stopLoss'))) {
+			window.alert('Please enter a numerical value.');
+			return (validForm = false);
+		} else if ($('#stockPrice') <= $('#stopLoss')) {
+			window.alert(
+				'Your stop loss cannot be greater than the stock price.'
+			);
+			return (validForm = false);
+		} else {
+			return (validForm = true);
+		}
+	});
+});
 
 // HELPER FUNCTION (Rounding)
 function RoundNum(num, length) {
@@ -11,70 +74,7 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// FORM VALIDATION
-// function checkPortfolioSize() {
-// 	var portfolioSize = parseFloat(
-// 		document.getElementById('portfolioSize').value
-// 	);
-//
-// 	if (portfolioSize <= 0 || (portfolioSize = '')) {
-// 		window.alert('Please enter a positive value.');
-// 		return (validForm = false);
-// 	} else if (isNaN(portfolioSize)) {
-// 		window.alert('Please enter a numerical value.');
-// 		return (validForm = false);
-// 	} else {
-// 		return (validForm = true);
-// 	}
-// }
-//
-// function checkVaR() {
-// 	var VaR = parseFloat(document.getElementById('VaR').value) / 100;
-//
-// 	if ((VaR <= 0) | (VaR > 100)) {
-// 		window.alert('Please enter a numerical value between 0 and 100.');
-// 		return (validForm = false);
-// 	} else if (isNaN(VaR)) {
-// 		window.alert('Please enter a numerical value.');
-// 		return (validForm = false);
-// 	} else {
-// 		return (validForm = true);
-// 	}
-// }
-//
-// function checkStockPrice() {
-// 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
-//
-// 	if (stockPrice <= 0) {
-// 		window.alert('Please enter a stock stock value above $0');
-// 		return (validForm = false);
-// 	} else if (isNaN(stockPrice)) {
-// 		window.alert('Please enter a numerical value.');
-// 		return (validForm = false);
-// 	} else {
-// 		return (validForm = true);
-// 	}
-// }
-//
-// function checkStopLoss() {
-// 	var stopLoss = parseFloat(document.getElementById('stopLoss').value);
-// 	var stockPrice = parseFloat(document.getElementById('stockPrice').value);
-//
-// 	if (stopLoss <= 0) {
-// 		window.alert('Please enter a stock stock value above $0');
-// 		return (validForm = false);
-// 	} else if (isNaN(stopLoss)) {
-// 		window.alert('Please enter a numerical value.');
-// 		return (validForm = false);
-// 	} else if (stockPrice <= stopLoss) {
-// 		window.alert('Your stop loss cannot be greater than the stock price.');
-// 		return (validForm = false);
-// 	} else {
-// 		return (validForm = true);
-// 	}
-// }
-
-// Calculates position size required and displays messages
+// CALCULATION AND MESSAGE DISPLAY
 function calculatePosSize() {
 	// Declare variables
 	var portfolioSize = parseFloat(
