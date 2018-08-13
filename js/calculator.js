@@ -26,6 +26,9 @@ $(document).ready(function() {
 			(portfolioSize * VaR) / (stockPrice - stopLoss),
 			0
 		);
+		var maxRisk = RoundNum(
+			(posSize * (stockPrice - stopLoss)) / portfolioSize
+		);
 		var exposure = RoundNum(stockPrice * posSize, 2);
 		var exposurePcnt = RoundNum((exposure / portfolioSize) * 100, 2);
 		var riskCapital = RoundNum(posSize * (stockPrice - stopLoss), 2);
@@ -55,6 +58,7 @@ $(document).ready(function() {
 		} else if (exposure => portfolioSize) {
 			document.getElementById('message1').innerHTML =
 				'Your current exposure level is greater than your portfolio size. Please reduce your allocated risk level or use a stop loss closer to your stock price.';
+			$('#message1').fadeIn(500);
 			document.getElementById('message2').style.display = 'none';
 		} else {
 			document.getElementById('message1').style.display = 'none';
