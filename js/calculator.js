@@ -1,21 +1,23 @@
 // This JS file is used to do the calculations for the position size
 var validForm = false;
 
-// FORM VALIDATION
+// LOADING SCREEN
 $(function() {
 	$('#calculator, #header')
 		.hide()
 		.fadeIn(1000);
+});
 
+// FORM VALIDATION
+$(function() {
 	// portfolio size check
 	$('#portfolioSize').blur(function() {
 		if ($('#portfolioSize') <= 0 || (portfolioSize = '')) {
-			window.alert('Please enter a positive value.');
-			$('#portfolioSize').select();
 			return (validForm = false);
 		} else if (isNaN($('#portfolioSize'))) {
-			window.alert('Please enter a numerical value.');
-			$('#portfolioSize').select();
+			$('#message1')
+				.show()
+				.html('no.');
 			return (validForm = false);
 		} else {
 			return (validForm = true);
@@ -24,10 +26,14 @@ $(function() {
 	// allocated risk check
 	$('#VaR').blur(function() {
 		if (($('#VaR') <= 0) | ($('#VaR') > 100)) {
-			window.alert('Please enter a numerical value between 0 and 100.');
+			$('#message1')
+				.show()
+				.html('no between 0 and 100.');
 			$('#VaR').return((validForm = false));
 		} else if (isNaN($('#VaR'))) {
-			window.alert('Please enter a numerical value.');
+			$('#message1')
+				.show()
+				.html('no.');
 			return (validForm = false);
 		} else {
 			return (validForm = true);
@@ -36,10 +42,14 @@ $(function() {
 	// stock price check
 	$('#stockPrice').blur(function() {
 		if ($('#stockPrice') <= 0) {
-			window.alert('Please enter a stock stock value above $0');
+			$('#message1')
+				.show()
+				.html('Please enter a stock stock value above $0');
 			return (validForm = false);
 		} else if (isNaN($('#stockPrice'))) {
-			window.alert('Please enter a numerical value.');
+			$('#message1')
+				.show()
+				.html('no.');
 			return (validForm = false);
 		} else {
 			return (validForm = true);
@@ -48,15 +58,19 @@ $(function() {
 	// stop loss check
 	$('#stopLoss').blur(function() {
 		if ($('#stopLoss') <= 0) {
-			window.alert('Please enter a stock stock value above $0');
+			$('#message1')
+				.show()
+				.html('Please enter a stock stock value above $0');
 			return (validForm = false);
 		} else if (isNaN($('#stopLoss'))) {
-			window.alert('Please enter a numerical value.');
+			$('#message1')
+				.show()
+				.html('no.');
 			return (validForm = false);
 		} else if ($('#stockPrice') <= $('#stopLoss')) {
-			window.alert(
-				'Your stop loss cannot be greater than the stock price.'
-			);
+			$('#message1')
+				.show()
+				.html('Your stop loss cannot be greater than the stock price.');
 			return (validForm = false);
 		} else {
 			return (validForm = true);

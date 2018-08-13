@@ -2,36 +2,36 @@
 <html lang="en">
 <head>
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>Risk Calculator</title>
-  <meta name="Risk management" content="">
-  <meta name="Stephen Yao" content="">
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>Risk Calculator</title>
+<meta name="Risk management" content="">
+<meta name="Stephen Yao" content="">
 
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-  <!-- JS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/calculator.js"></script>
-  <script type="text/javascript" src="js/validateForm.js"></script>
+<!-- JS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/calculator2.js"></script>
+<script type="text/javascript" src="js/validateForm.js"></script>
 
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/logo-favicon2.png">
+<!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/png" href="images/logo-favicon2.png">
 
 </head>
 <body>
@@ -55,7 +55,7 @@
                         <div class="tooltip">Portfolio Size ($):
                             <span class="tooltiptext">Your total value of your portfolio consisting of cash, stocks, bonds, etc should be entered here.</span>
                         </div><br>
-                        <input type="integer" style="text-align:center" id="portfolioSize"> <br>
+                        <input type="integer" style="text-align:center" id="portfolioSize"><br>
                         <div class="tooltip">Allocated Risk (%):
                             <span class="tooltiptext">Your desired risk for the trade should be entered here. For example, a desired risk of 5% means you are willing to risk losing 5% of your total portfolio on this trade.</span>
                         </div><br>
@@ -72,7 +72,7 @@
                         <input type="integer" style="text-align:center" id="stopLoss"> <br>
                     </div>
                 </div>
-                <input type="button" value="Calculate" onclick="calculatePosSize()"><br>
+                <input id="calculate" type="button" value="calculate" ><br>
             </form>
         </div>
     </div>
