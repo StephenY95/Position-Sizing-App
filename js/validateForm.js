@@ -14,12 +14,14 @@ $(function() {
 			$('#message1')
 				.html('Please enter a positive portfolio value.')
 				.show();
+			$('#message2').hide();
 		} else if (isNaN(inputPortfolioSize)) {
 			$('#message1')
 				.html('Please enter a proper portfolio size number.')
 				.show();
+			$('#message2').hide();
 		} else {
-			$('#message1').hide();
+			$('#message1', '#message2').hide();
 		}
 	});
 	// ALLOCATED RISK CHECK
@@ -30,12 +32,14 @@ $(function() {
 			$('#message1')
 				.html('Please enter an allocated risk between 1-100.')
 				.show();
+			$('#message2').hide();
 		} else if (isNaN(inputVaR)) {
 			$('#message1')
 				.html('Please enter a proper allocated risk number.')
 				.show();
+			$('#message2').hide();
 		} else {
-			$('#message1').hide();
+			$('#message1', '#message2').hide();
 		}
 	});
 	// STOCK PRICE CHECK
@@ -46,12 +50,14 @@ $(function() {
 			$('#message1')
 				.html('Please enter a stock price value above $0.')
 				.show();
+			$('#message2').hide();
 		} else if (isNaN(inputStockPrice)) {
 			$('#message1')
 				.html('Please enter a proper stock price.')
 				.show();
+			$('#message2').hide();
 		} else {
-			$('#message1').hide();
+			$('#message1', '#message2').hide();
 		}
 	});
 	// STOP LOSS CHECK
@@ -62,16 +68,19 @@ $(function() {
 			$('#message1')
 				.html('Please enter a stock price value above $0.')
 				.show();
+			$('#message2').hide();
 		} else if (isNaN(inputStopLoss)) {
 			$('#message1')
 				.html('Please enter a proper stock price.')
 				.show();
+			$('#message2').hide();
 		} else if ($('#stockPrice') <= inputStopLoss) {
 			$('#message1')
 				.html('Your stop loss cannot be greater than the stock price.')
 				.show();
+			$('#message2').hide();
 		} else {
-			$('#message1').hide();
+			$('#message1', '#message2').hide();
 		}
 	});
 });
